@@ -1,0 +1,30 @@
+admin_toolbar_version.settings:
+  type: config_object
+  label: 'Admin toolbar developer settings'
+  mapping:
+    environments:
+      type: sequence
+      label: 'Environments'
+      sequence:
+        type: mapping
+        mapping:
+          uuid:
+            type: uuid
+          domain:
+            type: string
+            label: 'Domain matching regex'
+          variable:
+            type: string
+            label: 'Environment variable matching'
+          name:
+            type: string
+            label: 'The name of the environment'
+          color:
+            type: string
+            label: 'The HEX format of the color'
+          git:
+            type: string
+            label: 'The location of the GIT HEAD file'
+    version_source:
+      type: string
+      label: 'Version source'

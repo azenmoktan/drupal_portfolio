@@ -1,0 +1,4 @@
+toolbar.version:
+  css:
+    theme:
+      css/version.css: {}

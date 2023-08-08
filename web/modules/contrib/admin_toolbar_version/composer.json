@@ -1,0 +1,24 @@
+{
+  "name": "drupal/admin_toolbar_version",
+  "description": "Adds version info to the admin toolbar tools menu.",
+  "type": "drupal-module",
+  "keywords": ["Drupal 9","UX","Calibr8","Toolbar","Devel","Calibrate"],
+  "homepage": "https://www.drupal.org/project/admin_toolbar_version",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Kris Booghmans",
+      "email": "kris@calibrate.be",
+      "homepage": "http://www.calibrate.be"
+    }
+  ],
+  "require": {
+    "drupal/core": "^8.8 || ^9 || ^10"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+admin_toolbar_version.settings:
+  path: '/admin/config/user-interface/admin-toolbar-version'
+  defaults:
+    _form: 'Drupal\admin_toolbar_version\Form\AdminToolbarVersionSettingsForm'
+    _title: 'Admin Toolbar Version'
+  requirements:
+    _permission: 'administer site configuration'

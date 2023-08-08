@@ -1,0 +1,5 @@
+admin_toolbar_version.settings:
+  title: 'Admin Toolbar Version'
+  route_name: admin_toolbar_version.settings
+  menu_name: admin
+  parent: system.admin_config_ui

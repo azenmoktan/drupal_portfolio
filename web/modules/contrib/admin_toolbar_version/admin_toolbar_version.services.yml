@@ -1,0 +1,4 @@
+services:
+  admin_toolbar_version.version_info:
+    class: Drupal\admin_toolbar_version\VersionInfoManager
+    arguments: ['@config.factory', '@extension.list.module', '@file_system', '@request_stack']

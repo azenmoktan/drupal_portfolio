@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Module file of admin toolbar version.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function admin_toolbar_version_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the admin_toolbar_version module.
+    case 'help.page.admin_toolbar_version':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module modifies the admin tool help menu item
+      (the drupal icon) by adding version information.') . '</p>';
+      $output .= '<ul>' . t('<li>Shows the drupal version</li>') . '</ul>';
+      $output .= '<ul>' . t('<li>Shows the "application" version, by extracting version
+      info from either a module or profile info yml file (configurable).</li>') . '</ul>';
+      $output .= '<ul>' . t('<li>Shows the current git branch (configurable)</li>') . '</ul>';
+      $output .= '<ul>' . t('<li>Shows the environment based on either domain or
+      environment variable (configurable)</li>') . '</ul>';
+      $output .= '<ul>' . t('<li>Alters the background color of the menu item based
+      on the environment (configurable). For example the production environment
+      can be set red to warn users they are editing a live site. Staging can be
+      orange and development green.</li>') . '</ul>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_toolbar().
+ */
+function admin_toolbar_version_toolbar_alter(&$items) {
+  $items['admin_toolbar_tools']['#attached']['library'][] = 'admin_toolbar_version/toolbar.version';
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function admin_toolbar_version_menu_links_discovered_alter(array &$links) {
+
+  /** @var \Drupal\admin_toolbar_version\VersionInfoManager $version_info */
+  $version_info = Drupal::service('admin_toolbar_version.version_info');
+  $style = $version_info->getStyle();
+
+  $links['admin_toolbar_tools.help']['title'] = $version_info->getTitle();
+  if ($style && isset($style['color'])) {
+    $links['admin_toolbar_tools.help']['options'] = [
+      'attributes' => [
+        'style' => "background:{$style['color']};",
+      ],
+    ];
+  }
+
+}
